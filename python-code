@@ -1,0 +1,13 @@
+
+import requests
+import json
+
+topic=input(" enter the key-word to search for news:    ")
+API="http://newsapi.org/v2/everything?q="+topic+"&from=2020-10-20&sortBy=publishedAt&apiKey=your_API_key"               //replace your api key
+
+p=json.loads(requests.request("GET",API).text)
+
+print("\n status of request : "+p['status']+"\n")
+
+for i in range(len(p['articles'])):
+    print(p['articles'][i]['url'])
